@@ -19,9 +19,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "THE_MOVIE_DB_WEB_BASE_URL", '"https://www.themoviedb.org/"')
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "THE_MOVIE_DB_WEB_BASE_URL", '"https://www.themoviedb.org/"')
         }
     }
     compileOptions {
