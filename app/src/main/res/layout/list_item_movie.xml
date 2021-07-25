@@ -1,69 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:strokeWidth="1dp"
-    app:strokeColor="@color/secondaryColor"
-    app:cardElevation="0dp"
-    android:layout_margin="8dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UseCompoundDrawables,ContentDescription">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="130dp"
-        android:layout_height="match_parent"
-        android:background="@color/primaryLightColor">
+    <data>
 
+        <variable
+            name="movie"
+            type="pe.santillan.rappi.data.domain.Movie" />
+    </data>
 
-        <ImageView
-            android:id="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/falcon_winter"
-            android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:scaleType="fitCenter" />
+    <androidx.cardview.widget.CardView style="@style/Theme.Movies.MovieItem">
 
-        <TextView
-            android:id="@+id/textView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/primaryColor"
-            android:gravity="center"
-            android:padding="8dp"
-            android:text="The Movie name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="@color/white" />
-
-        <LinearLayout
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_gradient_black"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/movie_item_width"
+            android:layout_height="match_parent"
+            android:background="@color/primaryLightColor">
 
             <ImageView
-                android:id="@+id/imageView2"
-                style="@style/Theme.Movies.Icon.Caption"
-                app:tint="@color/secondaryColor"
-                app:srcCompat="@drawable/ic_popular" />
+                android:id="@+id/poster"
+                style="@style/Theme.Movies.MovieItem.Poster"
+                app:fetchMovieImage="@{movie}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/falcon_winter" />
 
             <TextView
-                android:id="@+id/typeValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="2500"
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textColor="@color/secondaryColor" />
+                android:id="@+id/title"
+                style="@style/Theme.Movies.MovieItem.Title"
+                android:text="@{movie.title}"
+                app:layout_constraintEnd_toEndOf="@+id/poster"
+                app:layout_constraintStart_toStartOf="@+id/poster"
+                app:layout_constraintTop_toBottomOf="@+id/poster" />
 
+            <LinearLayout
+                style="@style/Theme.Movies.MovieItem.AdviceContainer"
+                app:layout_constraintBottom_toBottomOf="@+id/poster"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        </LinearLayout>
+                <ImageView
+                    style="@style/Theme.Movies.Icon.Small"
+                    app:srcAdviceIcon="@{movie}"
+                    app:tint="@color/secondaryColor"
+                    tools:srcCompat="@drawable/ic_popular" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/adviceValue"
+                    style="@style/Advice"
+                    app:setAdviceValue="@{movie}" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
