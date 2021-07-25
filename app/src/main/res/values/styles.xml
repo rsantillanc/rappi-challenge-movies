@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Movies.Icon" parent="Theme.Movies">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="contentDescription">Icon movie</item>
+    </style>
+
+    <style name="Theme.Movies.Icon.Caption" parent="Theme.Movies.Icon">
+        <item name="android:layout_width">18dp</item>
+    </style>
+
+    <style name="theme.Movies.Container" parent="Theme.Movies">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="Theme.Movies.Title" parent="Theme.Movies">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+    </style>
+
+    <style name="Theme.Movies.MovieList" parent="Theme.Movies">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+</resources>
