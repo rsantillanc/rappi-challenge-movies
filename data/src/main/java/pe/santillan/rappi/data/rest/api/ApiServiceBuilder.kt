@@ -4,6 +4,7 @@ import okhttp3.OkHttpClient
 import pe.santillan.rappi.data.rest.interceptor.NetworkInterceptor
 import pe.santillan.rappi.data.rest.interceptor.QueryApiKeyInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -25,6 +26,7 @@ object ApiServiceBuilder {
             .baseUrl(apiBaseUrl)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(T::class.java)
     }
