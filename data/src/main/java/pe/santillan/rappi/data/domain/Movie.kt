@@ -9,4 +9,5 @@ data class Movie(
     val voteAverage: Float,
     val voteCount: Int,
     val releaseDate: String,
+    val adviceType: String,
 )
