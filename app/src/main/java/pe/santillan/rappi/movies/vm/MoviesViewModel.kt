@@ -1,5 +1,6 @@
 package pe.santillan.rappi.movies.vm
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
@@ -14,22 +15,32 @@ class MoviesViewModel(
     private val uiThread: Scheduler = AndroidSchedulers.mainThread(),
     private val workThread: Scheduler = Schedulers.io(),
 ) : ViewModel() {
+
+    val error: MutableLiveData<String> = MutableLiveData("")
     private val compositeDisposable by lazy {
         CompositeDisposable()
     }
 
     fun getTopRatedMovies(subscriber: Consumer<List<Movie>>) {
         compositeDisposable.add(movieRepository.getTopRatedMovies()
-            .observeOn(workThread)
-            .subscribeOn(uiThread)
+            .observeOn(uiThread)
+            .subscribeOn(workThread)
+            .onErrorReturn { listOf() }
+            .doOnError(::handlerError)
             .subscribe { subscriber.accept(it) })
     }
 
     fun getPopularMovies(subscriber: Consumer<List<Movie>>) {
         compositeDisposable.add(movieRepository.getPopularMovies()
-            .observeOn(workThread)
-            .subscribeOn(uiThread)
+            .observeOn(uiThread)
+            .subscribeOn(workThread)
+            .onErrorReturn { listOf() }
+            .doOnError(::handlerError)
             .subscribe { subscriber.accept(it) })
+    }
+
+    private fun handlerError(throwable: Throwable?) {
+        throwable?.let { error.postValue(it.message) }
     }
 
     override fun onCleared() {

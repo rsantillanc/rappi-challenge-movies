@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/theme.Movies.Container"
     tools:context=".ui.MoviesFragment"
     tools:ignore="ContentDescription">
 
-    <!--  TOP RATED MOVIES  -->
-    <ImageView
-        android:id="@+id/iconRated"
-        style="@style/Theme.Movies.Icon"
-        android:src="@drawable/ic_rated"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/theme.Movies.Container">
 
-    <TextView
-        android:id="@+id/ratedMovies"
-        style="@style/Theme.Movies.Title"
-        android:text="@string/movies_top_rated_movies"
-        app:layout_constraintBottom_toBottomOf="@+id/iconRated"
-        app:layout_constraintStart_toEndOf="@+id/iconRated"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!--  TOP RATED MOVIES  -->
+        <ImageView
+            android:id="@+id/iconRated"
+            style="@style/Theme.Movies.Icon"
+            android:src="@drawable/ic_rated"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/topRatedList"
-        style="@style/Theme.Movies.MovieList"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratedMovies"
-        tools:listitem="@layout/list_item_movie" />
+        <TextView
+            android:id="@+id/ratedMovies"
+            style="@style/Theme.Movies.Title"
+            android:text="@string/movies_top_rated_movies"
+            app:layout_constraintBottom_toBottomOf="@+id/iconRated"
+            app:layout_constraintStart_toEndOf="@+id/iconRated"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!--  MOST POPULAR MOVIES  -->
-    <ImageView
-        android:id="@+id/iconPopular"
-        style="@style/Theme.Movies.Icon"
-        android:layout_marginTop="@dimen/space_between_list"
-        android:src="@drawable/ic_popular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topRatedList" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/topRatedList"
+            style="@style/Theme.Movies.MovieList"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratedMovies"
+            tools:listitem="@layout/list_item_movie" />
 
-    <TextView
-        android:id="@+id/popularMovies"
-        style="@style/Theme.Movies.Title"
-        android:text="@string/movies_popular_movies"
-        app:layout_constraintBottom_toBottomOf="@+id/iconPopular"
-        app:layout_constraintStart_toEndOf="@+id/iconPopular" />
+        <!--  MOST POPULAR MOVIES  -->
+        <ImageView
+            android:id="@+id/iconPopular"
+            style="@style/Theme.Movies.Icon"
+            android:layout_marginTop="@dimen/space_between_list"
+            android:src="@drawable/ic_popular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topRatedList" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularList"
-        style="@style/Theme.Movies.MovieList"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popularMovies"
-        tools:listitem="@layout/list_item_movie" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/popularMovies"
+            style="@style/Theme.Movies.Title"
+            android:text="@string/movies_popular_movies"
+            app:layout_constraintBottom_toBottomOf="@+id/iconPopular"
+            app:layout_constraintStart_toEndOf="@+id/iconPopular" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/popularList"
+            style="@style/Theme.Movies.MovieList"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/popularMovies"
+            tools:listitem="@layout/list_item_movie" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
