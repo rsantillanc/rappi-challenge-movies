@@ -7,8 +7,8 @@
         <item name="contentDescription">Icon movie</item>
     </style>
 
-    <style name="Theme.Movies.Icon.Caption" parent="Theme.Movies.Icon">
-        <item name="android:layout_width">18dp</item>
+    <style name="Theme.Movies.Icon.Small" parent="Theme.Movies.Icon">
+        <item name="android:layout_width">16dp</item>
     </style>
 
     <style name="theme.Movies.Container" parent="Theme.Movies">
@@ -29,5 +29,52 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Theme.Movies.MovieItem" parent="Theme.Movies">
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="strokeColor">@color/secondaryColor</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">6dp</item>
+    </style>
+
+    <style name="Theme.Movies.MovieItem.Poster" parent="Theme.Movies">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="Theme.Movies.MovieItem.Title" parent="Theme.Movies">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/primaryColor</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:fontFamily">@font/gotham_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+        <item name="android:text">@string/dummy_the_movie_name</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
+    </style>
+
+    <style name="Theme.Movies.MovieItem.AdviceContainer" parent="Theme.Movies">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_gradient_black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Advice" parent="Theme.Movies">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/gotham_bold</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">@color/secondaryColor</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:text">2500</item>
     </style>
 </resources>
