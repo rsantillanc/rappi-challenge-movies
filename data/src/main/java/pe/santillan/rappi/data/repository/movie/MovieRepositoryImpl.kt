@@ -7,10 +7,12 @@ import pe.santillan.rappi.data.rest.api.TheMoviesApi
 
 class MovieRepositoryImpl(private val moviesApi: TheMoviesApi) : MovieRepository {
     override fun getTopRatedMovies(): Observable<List<Movie>> {
-        return moviesApi.getMoviesByTopRated().map { it.results.asDomainModel() }.toObservable()
+        return moviesApi.getMoviesByTopRated().map { it.results.asDomainModel("rated") }
+            .toObservable()
     }
 
     override fun getPopularMovies(): Observable<List<Movie>> {
-        return moviesApi.getMoviesByPopularity().map { it.results.asDomainModel() }.toObservable()
+        return moviesApi.getMoviesByPopularity().map { it.results.asDomainModel() }
+            .toObservable()
     }
 }

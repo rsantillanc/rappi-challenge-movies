@@ -14,7 +14,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 6.741296,
                 voteAverage = 8.32F,
                 voteCount = 5238,
-                releaseDate = "1994-09-10"
+                releaseDate = "1994-09-10",
+                adviceType = "rated"
             ),
             Movie(
                 id = 244786,
@@ -24,7 +25,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 10.776056,
                 voteAverage = 8.29F,
                 voteCount = 2059,
-                releaseDate = "2014-10-10"
+                releaseDate = "2014-10-10",
+                adviceType = "rated"
             ),
             Movie(
                 id = 238,
@@ -34,7 +36,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 4.554654,
                 voteAverage = 8.26F,
                 voteCount = 3570,
-                releaseDate = "1972-03-15"
+                releaseDate = "1972-03-15",
+                adviceType = "rated"
             ),
             Movie(
                 id = 129,
@@ -44,7 +47,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 6.886678,
                 voteAverage = 8.15F,
                 voteCount = 2000,
-                releaseDate = "2001-07-20"
+                releaseDate = "2001-07-20",
+                adviceType = "rated"
             ),
         ))
     }
@@ -59,7 +63,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 48.261451,
                 voteAverage = 5.91F,
                 voteCount = 1466,
-                releaseDate = "2016-08-03"
+                releaseDate = "2016-08-03",
+                adviceType = "popular"
             ),
             Movie(
                 id = 324668,
@@ -69,7 +74,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 10.776056,
                 voteAverage = 5.25F,
                 voteCount = 649,
-                releaseDate = "2016-07-27"
+                releaseDate = "2016-07-27",
+                adviceType = "popular"
             ),
             Movie(
                 id = 244786,
@@ -79,7 +85,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 29.737342,
                 voteAverage = 6.64F,
                 voteCount = 684,
-                releaseDate = "2016-06-02"
+                releaseDate = "2016-06-02",
+                adviceType = "popular"
             ),
             Movie(
                 id = 244786,
@@ -89,7 +96,8 @@ class FakeMovieRepositoryImpl : MovieRepository {
                 popularity = 22.279864,
                 voteAverage = 4.13F,
                 voteCount = 628,
-                releaseDate = "2015-01-23"
+                releaseDate = "2015-01-23",
+                adviceType = "popular"
             ),
         ))
     }
