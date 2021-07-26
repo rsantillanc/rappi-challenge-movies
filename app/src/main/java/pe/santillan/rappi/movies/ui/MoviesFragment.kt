@@ -46,7 +46,6 @@ class MoviesFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, group: ViewGroup?, state: Bundle?): View {
-        // Inflate the layout for this fragment
         binding = bind(inflater, group)
         setupUi()
         subscribeUi()
@@ -102,7 +101,7 @@ class MoviesFragment : Fragment() {
 
     private fun subscribeToFetchTopRatedMovies() {
         moviesViewModel.getTopRatedMovies { ratedMovies ->
-            (binding.popularList.adapter as? ListMovieAdapter)?.submitList(ratedMovies)
+            (binding.topRatedList.adapter as? ListMovieAdapter)?.submitList(ratedMovies)
         }
     }
 
