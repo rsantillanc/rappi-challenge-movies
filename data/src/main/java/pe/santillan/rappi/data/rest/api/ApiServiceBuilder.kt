@@ -1,6 +1,7 @@
 package pe.santillan.rappi.data.rest.api
 
 import okhttp3.OkHttpClient
+import pe.santillan.rappi.data.BuildConfig
 import pe.santillan.rappi.data.rest.interceptor.NetworkInterceptor
 import pe.santillan.rappi.data.rest.interceptor.QueryApiKeyInterceptor
 import retrofit2.Retrofit
@@ -10,9 +11,9 @@ import java.util.concurrent.TimeUnit
 
 object ApiServiceBuilder {
     inline fun <reified T> create(
-        apiBaseUrl: String,
+        apiBaseUrl: String = BuildConfig.THE_MOVIE_DB_API_BASE_URL,
         apiKeyName: String = "api_key",
-        apiKeyValue: String = "",
+        apiKeyValue: String = BuildConfig.THE_MOVIE_DB_API_KEY,
     ): T {
         val client = OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
