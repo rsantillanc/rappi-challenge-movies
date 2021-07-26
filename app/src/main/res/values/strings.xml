@@ -3,4 +3,6 @@
     <string name="movies_top_rated_movies">Top rated movies</string>
     <string name="movies_popular_movies">Most popular movies</string>
     <string name="dummy_the_movie_name">The Falcon and The Winter Soldier</string>
+    <string name="auth_required">Authorization required!</string>
+    <string name="request">Solicitar</string>
 </resources>
