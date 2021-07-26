@@ -14,7 +14,7 @@ fun ImageView.fetchMovieImage(movie: Movie) {
     circularProgressDrawable.strokeWidth = 5f
     circularProgressDrawable.centerRadius = 30f
     circularProgressDrawable.start()
-    Glide.with(this).load(movie.posterPath)
+    Glide.with(this).load("https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + movie.posterPath)
         .placeholder(circularProgressDrawable)
         .into(this)
 }
@@ -33,6 +33,6 @@ fun TextView.setAdviceValue(movie: Movie) {
     text = if (movie.adviceType == "rated") {
         "${movie.voteCount}"
     } else {
-        "${movie.popularity}"
+        "${movie.popularity.toInt()}"
     }
 }

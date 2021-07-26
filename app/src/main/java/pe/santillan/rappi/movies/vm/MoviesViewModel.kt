@@ -39,7 +39,7 @@ class MoviesViewModel(
         }
 
         if (accessToken?.isSuccess == true) {
-            //Call requesSession() method due to we've had a token.
+            //Call requestSession() method due to we've had a token.
             requestSession()
         } else {
             requestToken()
