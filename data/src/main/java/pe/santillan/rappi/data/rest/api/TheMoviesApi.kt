@@ -10,8 +10,9 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface TheMoviesApi {
+const val KEY_REQUEST_TOKEN = "request_token"
 
+interface TheMoviesApi {
     @GET("authentication/token/new")
     fun authenticateNewToken(): Single<TokenDto>
 
