@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="RtlSymmetry,RtlHardcoded">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="pe.santillan.rappi.data.domain.Movie" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:collapsedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Collapsed"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginBottom="@dimen/margin_x3"
+                app:expandedTitleMarginStart="@dimen/margin_x7"
+                app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="?attr/colorPrimaryVariant">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/content_image_movie"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="fitXY"
+                    app:fetchMovieImage="@{movie}"
+                    tools:src="@drawable/falcon_winter" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_x7"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/bg_gradient_dark" />
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    android:elevation="0dp"
+                    app:collapseIcon="@drawable/ic_rated_menu"
+                    app:layout_collapseMode="pin"
+                    app:menu="@menu/menu_movie_detail"
+                    app:navigationIcon="?homeAsUpIndicator"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Note: A RecyclerView can also be used -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primaryColor"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_x2">
+
+                    <TextView
+                        android:id="@+id/title"
+                        style="@style/Theme.Movies.Title"
+                        android:padding="@dimen/padding_x1"
+                        android:text="@{movie.title}"
+                        android:textColor="@android:color/white"
+                        tools:text="@string/dummy_movie_title" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/padding_x1"
+                        android:text="@{@string/movie_detail_release_date(movie.releaseDate)}"
+                        android:textColor="@color/white_alpha_75"
+                        tools:text="@string/dummy_movie_release_date" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/Theme.Movies.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_x4"
+                    android:text="@string/text_overview" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="@dimen/margin_x2"
+                    android:layout_marginEnd="@dimen/margin_x2"
+                    android:layout_marginBottom="@dimen/margin_x2"
+                    android:background="@color/primaryDarkColor" />
+
+                <TextView
+                    android:id="@+id/overview"
+                    style="@style/Theme.Movies.TextContent"
+                    android:layout_marginStart="@dimen/margin_x2"
+                    android:layout_marginEnd="@dimen/margin_x2"
+                    android:text="@{movie.overview}"
+                    tools:text="@string/dummy_movie_overview" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/content_fab"
+            android:src="@drawable/ic_share_24"
+            android:theme="@style/Theme.Movies.Fab"
+            app:fabSize="normal"
+            app:layout_anchor="@id/appbar"
+            app:layout_anchorGravity="bottom|right|end"
+            app:useCompatPadding="true" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

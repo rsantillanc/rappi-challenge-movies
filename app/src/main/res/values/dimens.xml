@@ -2,4 +2,13 @@
 <resources>
     <dimen name="space_between_list">0dp</dimen>
     <dimen name="movie_item_width">120dp</dimen>
+    <dimen name="margin_x2">16dp</dimen>
+    <dimen name="padding_x1">8dp</dimen>
+    <dimen name="movie_detail_poster_height">352dp</dimen>
+    <dimen name="margin_x3">24dp</dimen>
+    <dimen name="margin_x7">56dp</dimen>
+    <dimen name="height_x7">56dp</dimen>
+    <dimen name="padding_x2">16dp</dimen>
+    <dimen name="padding_x4">32dp</dimen>
+    <dimen name="margin_x1">8dp</dimen>
 </resources>

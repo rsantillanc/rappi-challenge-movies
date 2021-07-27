@@ -9,5 +9,18 @@
         android:id="@+id/moviesFragment"
         android:name="pe.santillan.rappi.movies.ui.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies">
+        <action
+            android:id="@+id/action_movies_to_movie_detail"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="pe.santillan.rappi.movies.ui.MovieDetailFragment"
+        android:label="MovieDetailUI"
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movie"
+            app:argType="pe.santillan.rappi.data.domain.Movie" />
+    </fragment>
 </navigation>

@@ -1,5 +1,7 @@
 package pe.santillan.rappi.data.domain
 
+import java.io.Serializable
+
 data class Movie(
     val id: Long,
     val posterPath: String,
@@ -10,4 +12,4 @@ data class Movie(
     val voteCount: Int,
     val releaseDate: String,
     val adviceType: String,
-)
+) : Serializable
