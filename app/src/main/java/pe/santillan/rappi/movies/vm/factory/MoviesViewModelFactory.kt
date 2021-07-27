@@ -5,9 +5,10 @@ import androidx.lifecycle.ViewModelProvider
 import pe.santillan.rappi.data.repository.auth.AuthRepository
 import pe.santillan.rappi.data.repository.movie.MovieRepository
 import pe.santillan.rappi.movies.vm.MoviesViewModel
+import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-class MoviesViewModelFactory(
+class MoviesViewModelFactory @Inject constructor(
     private val movieRepository: MovieRepository,
     private val authRepository: AuthRepository,
 ) : ViewModelProvider.Factory {
