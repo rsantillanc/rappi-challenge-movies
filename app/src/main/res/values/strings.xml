@@ -2,7 +2,19 @@
     <string name="app_name">Movies</string>
     <string name="movies_top_rated_movies">Top rated movies</string>
     <string name="movies_popular_movies">Most popular movies</string>
-    <string name="dummy_the_movie_name">The Falcon and The Winter Soldier</string>
+    <string name="movie_detail_release_date">Release: %s</string>
     <string name="auth_required">Authorization required!</string>
     <string name="request">Solicitar</string>
+    <string name="text_rated">Rated</string>
+    <string name="text_about">About</string>
+    <string name="page_movie_detail">Movie detail</string>
+    <string name="content_image_movie">Image movie</string>
+    <string name="dummy_movie_title">The Falcon and The Winter Soldier</string>
+    <string name="dummy_movie_overview">Following the events of “Avengers: Endgame”, the Falcon, Sam Wilson and the Winter Soldier, Bucky Barnes team up in a global adventure that tests their abilities, and their patience.</string>
+    <string name="dummy_movie_release_date">Release: 25-08-2018</string>
+    <string name="dummy_movie_rated_val">25k</string>
+    <string name="text_overview">Overview</string>
+    <string name="content_fab">Floating action button</string>
+    <string name="text_item">item</string>
+    <string name="content_item_icon">item icon</string>
 </resources>

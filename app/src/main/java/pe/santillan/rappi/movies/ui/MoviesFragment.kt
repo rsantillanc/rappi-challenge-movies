@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
@@ -50,6 +51,12 @@ class MoviesFragment : Fragment() {
         setupUi()
         subscribeUi()
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().window.statusBarColor =
+            ContextCompat.getColor(requireActivity(), R.color.primaryColor)
     }
 
     override fun onResume() {
@@ -117,12 +124,6 @@ class MoviesFragment : Fragment() {
         startActivity(intent)
     }
 
-    private fun bind(
-        inflater: LayoutInflater,
-        group: ViewGroup?,
-
-        ) = FragmentMoviesBinding.bind(inflater.inflate(
-        R.layout.fragment_movies,
-        group,
-        false))
+    private fun bind(inflater: LayoutInflater, group: ViewGroup?) = FragmentMoviesBinding.bind(
+        inflater.inflate(R.layout.fragment_movies, group, false))
 }
