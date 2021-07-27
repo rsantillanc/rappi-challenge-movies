@@ -4,7 +4,6 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -13,38 +12,28 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
-import pe.santillan.rappi.data.BuildConfig
-import pe.santillan.rappi.data.repository.auth.AuthRepository
-import pe.santillan.rappi.data.repository.auth.AuthRepositoryImpl
-import pe.santillan.rappi.data.repository.movie.MovieRepositoryImpl
-import pe.santillan.rappi.data.rest.api.ApiServiceBuilder
-import pe.santillan.rappi.data.rest.api.TheMoviesApi
-import pe.santillan.rappi.movies.MainActivity
 import pe.santillan.rappi.movies.R
 import pe.santillan.rappi.movies.databinding.FragmentMoviesBinding
 import pe.santillan.rappi.movies.ui.adapter.ListMovieAdapter
+import pe.santillan.rappi.movies.util.app
 import pe.santillan.rappi.movies.vm.MoviesViewModel
 import pe.santillan.rappi.movies.vm.factory.MoviesViewModelFactory
+import javax.inject.Inject
 
 class MoviesFragment : Fragment() {
 
     private lateinit var binding: FragmentMoviesBinding
-    private lateinit var preference: SharedPreferences
-    private val moviesApi = ApiServiceBuilder.create<TheMoviesApi>()
-    private val movieRepository = MovieRepositoryImpl(moviesApi)
-    private val authRepository: AuthRepository by lazy {
-        AuthRepositoryImpl(moviesApi, preference)
-    }
+
+    @Inject
+    lateinit var viewModelFactory: MoviesViewModelFactory
+
     private val moviesViewModel: MoviesViewModel by viewModels {
-        MoviesViewModelFactory(movieRepository, authRepository)
+        viewModelFactory
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        preference = requireActivity().getSharedPreferences(
-            BuildConfig.LIBRARY_PACKAGE_NAME,
-            Context.MODE_PRIVATE
-        )
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        app().inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, group: ViewGroup?, state: Bundle?): View {
