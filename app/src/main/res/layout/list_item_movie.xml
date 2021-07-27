@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
             name="movie"
             type="pe.santillan.rappi.data.domain.Movie" />
     </data>
@@ -16,7 +20,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="@dimen/movie_item_width"
             android:layout_height="match_parent"
-            android:background="@color/primaryLightColor">
+            android:background="@color/primaryLightColor"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:onClick="@{clickListener}">
 
             <ImageView
                 android:id="@+id/poster"

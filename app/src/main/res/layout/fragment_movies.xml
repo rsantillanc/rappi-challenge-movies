@@ -5,62 +5,98 @@
     tools:context=".ui.MoviesFragment"
     tools:ignore="ContentDescription">
 
-    <androidx.constraintlayout.widget.ConstraintLayout style="@style/theme.Movies.Container">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!--  TOP RATED MOVIES  -->
-        <ImageView
-            android:id="@+id/iconRated"
-            style="@style/Theme.Movies.Icon"
-            android:src="@drawable/ic_rated"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/ratedMovies"
-            style="@style/Theme.Movies.Title"
-            android:text="@string/movies_top_rated_movies"
-            app:layout_constraintBottom_toBottomOf="@+id/iconRated"
-            app:layout_constraintStart_toEndOf="@+id/iconRated"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="0dp"
+                app:collapseIcon="@drawable/ic_rated_menu"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/app_name"
+                app:titleTextColor="@color/white" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/topRatedList"
-            style="@style/Theme.Movies.MovieList"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ratedMovies"
-            tools:listitem="@layout/list_item_movie" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <!--  MOST POPULAR MOVIES  -->
-        <ImageView
-            android:id="@+id/iconPopular"
-            style="@style/Theme.Movies.Icon"
-            android:layout_marginTop="@dimen/space_between_list"
-            android:src="@drawable/ic_popular"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/guideline" />
+        <!-- Note: A RecyclerView can also be used -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/popularMovies"
-            style="@style/Theme.Movies.Title"
-            android:text="@string/movies_popular_movies"
-            app:layout_constraintBottom_toBottomOf="@+id/iconPopular"
-            app:layout_constraintStart_toEndOf="@+id/iconPopular" />
+            <androidx.constraintlayout.widget.ConstraintLayout style="@style/theme.Movies.Container">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/popularList"
-            style="@style/Theme.Movies.MovieList"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/popularMovies"
-            tools:listitem="@layout/list_item_movie" />
+                <!--  TOP RATED MOVIES  -->
+                <ImageView
+                    android:id="@+id/iconRated"
+                    style="@style/Theme.Movies.Icon"
+                    android:src="@drawable/ic_rated"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/ratedMovies"
+                    style="@style/Theme.Movies.Title"
+                    android:layout_marginStart="@dimen/margin_x2"
+                    android:text="@string/movies_top_rated_movies"
+                    app:layout_constraintBottom_toBottomOf="@+id/iconRated"
+                    app:layout_constraintStart_toEndOf="@+id/iconRated"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/topRatedList"
+                    style="@style/Theme.Movies.MovieList"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ratedMovies"
+                    tools:listitem="@layout/list_item_movie" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <!--  MOST POPULAR MOVIES  -->
+                <ImageView
+                    android:id="@+id/iconPopular"
+                    style="@style/Theme.Movies.Icon"
+                    android:layout_marginTop="@dimen/space_between_list"
+                    android:src="@drawable/ic_popular"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+                <TextView
+                    android:id="@+id/popularMovies"
+                    style="@style/Theme.Movies.Title"
+                    android:layout_marginStart="@dimen/margin_x2"
+                    android:text="@string/movies_popular_movies"
+                    app:layout_constraintBottom_toBottomOf="@+id/iconPopular"
+                    app:layout_constraintStart_toEndOf="@+id/iconPopular" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/popularList"
+                    style="@style/Theme.Movies.MovieList"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/popularMovies"
+                    tools:listitem="@layout/list_item_movie" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>
