@@ -17,4 +17,6 @@
     <string name="content_fab">Floating action button</string>
     <string name="text_item">item</string>
     <string name="content_item_icon">item icon</string>
+    <string name="text_search_movies">Search movies</string>
+    <string name="search_movies_hint">Burcar por nombre</string>
 </resources>
