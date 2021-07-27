@@ -1,14 +1,14 @@
 package pe.santillan.rappi.movies.ui
 
+import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,6 +19,7 @@ import pe.santillan.rappi.data.repository.auth.AuthRepositoryImpl
 import pe.santillan.rappi.data.repository.movie.MovieRepositoryImpl
 import pe.santillan.rappi.data.rest.api.ApiServiceBuilder
 import pe.santillan.rappi.data.rest.api.TheMoviesApi
+import pe.santillan.rappi.movies.MainActivity
 import pe.santillan.rappi.movies.R
 import pe.santillan.rappi.movies.databinding.FragmentMoviesBinding
 import pe.santillan.rappi.movies.ui.adapter.ListMovieAdapter
@@ -64,11 +65,41 @@ class MoviesFragment : Fragment() {
         moviesViewModel.verifyAccessStatus()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.movies_menu, menu)
+
+        val listMovieAdapter = binding.popularList.adapter as ListMovieAdapter
+        val topRatedList = binding.topRatedList.adapter as ListMovieAdapter
+
+        requireActivity().apply {
+            val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+            (menu.findItem(R.id.action_search).actionView as SearchView).apply {
+                setSearchableInfo(searchManager.getSearchableInfo(componentName))
+                setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener,
+                    SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        listMovieAdapter.filter.filter(query)
+                        topRatedList.filter.filter(query)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        listMovieAdapter.filter.filter(query)
+                        topRatedList.filter.filter(query)
+                        return true
+                    }
+                })
+            }
+        }
+    }
+
     private fun setupUi() {
+        setHasOptionsMenu(true)
         with(binding) {
             topRatedList.adapter = ListMovieAdapter()
             popularList.adapter = ListMovieAdapter()
         }
+        (requireActivity() as MainActivity).setSupportActionBar(binding.toolbar)
     }
 
     private fun subscribeUi() {
@@ -102,13 +133,13 @@ class MoviesFragment : Fragment() {
 
     private fun subscribeToFetchPopularMovies() {
         moviesViewModel.getPopularMovies { popularMovies ->
-            (binding.popularList.adapter as? ListMovieAdapter)?.submitList(popularMovies)
+            (binding.popularList.adapter as? ListMovieAdapter)?.submitMovies(popularMovies)
         }
     }
 
     private fun subscribeToFetchTopRatedMovies() {
         moviesViewModel.getTopRatedMovies { ratedMovies ->
-            (binding.topRatedList.adapter as? ListMovieAdapter)?.submitList(ratedMovies)
+            (binding.topRatedList.adapter as? ListMovieAdapter)?.submitMovies(ratedMovies)
         }
     }
 
