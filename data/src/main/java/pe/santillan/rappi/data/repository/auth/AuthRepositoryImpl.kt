@@ -10,11 +10,15 @@ import pe.santillan.rappi.data.mapper.asDomainModel
 import pe.santillan.rappi.data.rest.api.KEY_REQUEST_TOKEN
 import pe.santillan.rappi.data.rest.api.TheMoviesApi
 import pe.santillan.rappi.data.util.TAG
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class AuthRepositoryImpl(
+@Singleton
+class AuthRepositoryImpl @Inject constructor(
     private val moviesApi: TheMoviesApi,
     private val preferences: SharedPreferences,
 ) : AuthRepository {
+
     private val prefKey = "$TAG + #SESSION_KEY"
 
     override fun createToken(): Single<Token> {
